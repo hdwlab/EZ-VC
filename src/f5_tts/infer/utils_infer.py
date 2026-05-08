@@ -31,6 +31,8 @@ from vocos import Vocos
 from f5_tts.model import CFM
 from f5_tts.model.utils import convert_char_to_pinyin, get_tokenizer
 
+import bigvgan
+
 
 _ref_audio_cache = {}
 _ref_text_cache = {}
@@ -126,10 +128,6 @@ def load_vocoder(vocoder_name="vocos", is_local=False, local_path="", device=dev
         vocoder.load_state_dict(state_dict)
         vocoder = vocoder.eval().to(device)
     elif vocoder_name == "bigvgan":
-        try:
-            from third_party.BigVGAN import bigvgan
-        except ImportError:
-            print("You need to follow the README to init submodule and change the BigVGAN source code.")
         if is_local:
             # download generator from https://huggingface.co/nvidia/bigvgan_v2_24khz_100band_256x/tree/main
             vocoder = bigvgan.BigVGAN.from_pretrained(local_path, use_cuda_kernel=False)

@@ -1,3 +1,7 @@
+# Modification notes
+
+This repo has been modified specifically for inference use, other capabilities might fail.
+
 # EZ-VC: Easy Zero-shot Any-to-Any Voice Conversion
 
 [![python](https://img.shields.io/badge/Python-3.10-brightgreen)](https://github.com/EZ-VC/EZ-VC)
